@@ -1,0 +1,16 @@
+# Dependencias: se reconstruyen con npm ci a partir de package-lock.json
+node_modules/
+
+# Documentación generada por JSDoc (la genera el pipeline)
+docs/api/
+
+# Configuración local y secretos
+.env
+.env.*
+!.env.example
+
+# Registros y ficheros del sistema
+*.log
+npm-debug.log*
+.DS_Store
+coverage/
