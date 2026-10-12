@@ -1,6 +1,6 @@
 'use strict';
 
-const TIPOS_IVA = { general: 21, reducido: 10, superreducido: 4 };
+const TIPOS_IVA = Object.freeze({ general: 21, reducido: 10, superreducido: 4 });
 
 function redondear(importe) {
   return Math.round((importe + Number.EPSILON) * 100) / 100;
