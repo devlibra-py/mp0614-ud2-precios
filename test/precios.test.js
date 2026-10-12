@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { precioFinal, aplicarDescuento, desglosarIVA } = require('../src/precios');
+const { TIPOS_IVA, precioFinal, aplicarDescuento, desglosarIVA } = require('../src/precios');
 
 test('precioFinal aplica el 21 % por defecto', () => {
   assert.equal(precioFinal(100), 121);
@@ -38,4 +38,9 @@ test('desglosarIVA funciona con el tipo superreducido', () => {
 
 test('desglosarIVA rechaza totales negativos', () => {
   assert.throws(() => desglosarIVA(-5), RangeError);
+});
+
+test('TIPOS_IVA incluye el tipo exento y no se puede modificar', () => {
+  assert.equal(precioFinal(100, TIPOS_IVA.exento), 100);
+  assert.ok(Object.isFrozen(TIPOS_IVA));
 });
