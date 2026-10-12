@@ -1,6 +1,6 @@
 {
   "name": "mp0614-ud2-precios",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Calculadora de precios con IVA (MP0614 UD2)",
   "main": "src/precios.js",
   "directories": {
