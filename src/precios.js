@@ -19,7 +19,7 @@ const TIPOS_IVA = Object.freeze({ general: 21, reducido: 10, superreducido: 4, e
  * @returns {number} Importe redondeado a dos decimales.
  */
 function redondear(importe) {
-  return Math.round((importe + Number.EPSILON) * 100) / 100;
+  return Math.trunc(importe * 100) / 100;
 }
 
 /**
