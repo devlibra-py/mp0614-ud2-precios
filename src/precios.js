@@ -20,4 +20,12 @@ function aplicarDescuento(precio, porcentaje) {
   return redondear(precio * (1 - porcentaje / 100));
 }
 
-module.exports = { TIPOS_IVA, precioFinal, aplicarDescuento };
+function desglosarIVA(total, tipo = TIPOS_IVA.general) {
+  if (total < 0) {
+    throw new RangeError('El total no puede ser negativo');
+  }
+  const base = redondear(total / (1 + tipo / 100));
+  return { base, cuota: redondear(total - base) };
+}
+
+module.exports = { TIPOS_IVA, precioFinal, aplicarDescuento, desglosarIVA };
