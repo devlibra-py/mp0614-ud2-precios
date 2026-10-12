@@ -19,12 +19,21 @@ npm ci
 ## Uso
 
 ```js
-const { precioFinal, aplicarDescuento } = require('./src/precios');
+const { precioFinal, aplicarDescuento, desglosarIVA } = require('./src/precios');
 
 precioFinal(100);          // 121   (IVA general, 21 %)
 precioFinal(50, 10);       // 55    (IVA reducido, 10 %)
 aplicarDescuento(80, 25);  // 60
+desglosarIVA(121);         // { base: 100, cuota: 21 }
 ```
+
+## Tipos de IVA incluidos
+
+| Tipo           | Porcentaje | Ejemplos                         |
+| -------------- | ---------- | -------------------------------- |
+| general        | 21 %       | La mayoría de bienes y servicios |
+| reducido       | 10 %       | Hostelería, transporte           |
+| superreducido  | 4 %        | Pan, libros, medicamentos        |
 
 ## Pruebas
 
