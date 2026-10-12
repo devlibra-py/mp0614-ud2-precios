@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { precioFinal, aplicarDescuento } = require('../src/precios');
+const { precioFinal, aplicarDescuento, desglosarIVA } = require('../src/precios');
 
 test('precioFinal aplica el 21 % por defecto', () => {
   assert.equal(precioFinal(100), 121);
@@ -26,4 +26,16 @@ test('aplicarDescuento resta el porcentaje', () => {
 
 test('aplicarDescuento rechaza porcentajes fuera de rango', () => {
   assert.throws(() => aplicarDescuento(10, 120), RangeError);
+});
+
+test('desglosarIVA separa base y cuota del 21 %', () => {
+  assert.deepEqual(desglosarIVA(121), { base: 100, cuota: 21 });
+});
+
+test('desglosarIVA funciona con el tipo superreducido', () => {
+  assert.deepEqual(desglosarIVA(104, 4), { base: 100, cuota: 4 });
+});
+
+test('desglosarIVA rechaza totales negativos', () => {
+  assert.throws(() => desglosarIVA(-5), RangeError);
 });
