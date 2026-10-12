@@ -40,3 +40,17 @@ desglosarIVA(121);         // { base: 100, cuota: 21 }
 ```bash
 npm test
 ```
+
+## Documentación
+
+```bash
+npm run docs   # genera la referencia de la API en docs/api
+```
+
+El pipeline de integración continua genera la documentación en cada cambio y la publica como artefacto `documentacion`.
+
+## Integración continua
+
+[![CI](https://github.com/devlibra-py/mp0614-ud2-precios/actions/workflows/ci.yml/badge.svg)](https://github.com/devlibra-py/mp0614-ud2-precios/actions/workflows/ci.yml)
+
+Cada envío a `main` y cada solicitud de incorporación ejecutan: `npm ci`, ESLint, pruebas, `npm audit` y JSDoc.
